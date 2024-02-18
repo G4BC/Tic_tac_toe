@@ -28,9 +28,9 @@ def print_table(matrix):
     for row in range(3):
         for column in range(3):
             if matrix[row][column] == 1:
-                print("X", "", end="")      #Ideia: Aqui poderia ser o símbolo do jogador personalizado, ao invés de X
+                print("X", "", end="")      #Idea: Here it could be the personalized symbol of the player, instead of "X"
             elif matrix[row][column] == 2:
-                print("O", "", end="")      #Ideia: Mesma coisa de personalização
+                print("O", "", end="")      #Idea: Same idea for the CPU
             elif matrix[row][column]==0:
                 print("  ", end="")
 
@@ -43,8 +43,6 @@ def print_table(matrix):
 
 
 matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-
-#Ideia: Deixar o jogador selecionar o seu símbolo e o do seu oponente. Talvez deixar o jogo multiplayer. Deixar a IA mais inteligente. Fazer um tutorial melhor sobre os espaços.
 
 finish = 0
 while not finish:
@@ -89,7 +87,7 @@ while not finish:
             i = y - 1  
             j = x - 1
 
-            #Ideia: Primeiramente, checar se em alguma linha, coluna ou diagonal o jogador está quase ganhando (com 2). Se não, fazer a jogada tradicional.
+            #Idea to improve the CPU's skill: Firstly, check if in any row, column or diagonal the player is almost winning (with two symbols). If not, make the tradicional play.
 
             # It tries to play at the sides of the player's symbol 
             if i+1 < 3 and matrix[i+1][j]==0:
