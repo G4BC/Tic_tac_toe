@@ -22,6 +22,7 @@ def hasWon(matrix, n):
         return 1
     return 0
 
+
 def print_table(matrix):
     """It just prints a matrix in a stylish way"""
     print()
@@ -42,121 +43,125 @@ def print_table(matrix):
     print()
 
 
-matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-
-finish = 0
-while not finish:
-    print("Welcome to Tic Tac Toe!")
-    print()
-    print("Instructions:")
-    print("-> Inform the space you wish to put your symbol on")
-    print("-> Try to make three of your symbols in a row, column or diagonal")
-
+def main():
     matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-    print_table(matrix)
-    result = 0
-    closed = 0
-    while not closed:
-        # Player's Turn -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-        print("Your turn: ")
-        digited = 0
-        while not digited:
-            y, x = input().split()
-            y = int(y)
-            x = int(x)
-            if (x==1 or x==2 or x==3) and (y==1 or y==2 or y==3):
-                if(matrix[y-1][x-1] == 0):
-                    digited = 1
+    
+    finish = 0
+    while not finish:
+        print("Welcome to Tic Tac Toe!")
+        print()
+        print("Instructions:")
+        print("-> Inform the space you wish to put your symbol on")
+        print("-> Try to make three of your symbols in a row, column or diagonal")
+    
+        matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+        print_table(matrix)
+        result = 0
+        closed = 0
+        while not closed:
+            # Player's Turn -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+            print("Your turn: ")
+            digited = 0
+            while not digited:
+                y, x = input().split()
+                y = int(y)
+                x = int(x)
+                if (x==1 or x==2 or x==3) and (y==1 or y==2 or y==3):
+                    if(matrix[y-1][x-1] == 0):
+                        digited = 1
+                    else:
+                        print("Invalid input. Try again")
                 else:
                     print("Invalid input. Try again")
-            else:
-                print("Invalid input. Try again")
-
-        matrix[y-1][x-1] = 1
-        print_table(matrix)
-
-        # Checking if the player has won
-        if hasWon(matrix, 1) == 1:
-            result = 1
-            closed = 1            
-
-
-        if not closed:
-            #Computer's Turn -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-            played = 0
-            i = y - 1  
-            j = x - 1
-
-            #Idea to improve the CPU's skill: Firstly, check if in any row, column or diagonal the player is almost winning (with two symbols). If not, make the tradicional play.
-
-            # It tries to play at the sides of the player's symbol 
-            if i+1 < 3 and matrix[i+1][j]==0:
-                matrix[i+1][j] = 2
-                played = 1
-            elif i-1 >= 0 and matrix[i-1][j]==0:
-                matrix[i-1][j] = 2
-                played = 1
-            elif j+1 < 3 and matrix[i][j+1]==0:
-                matrix[i][j+1] = 2
-                played = 1
-            elif j-1 >= 0 and matrix[i][j-1]==0:
-                matrix[i][j-1] = 2
-                played = 1
-            # Now at the diagonals
-            elif i+1<3 and j+1<3 and matrix[i+1][j+1]==0:
-                matrix[i+1][j+1] = 2
-                played = 1
-            elif i+1<3 and j-1>=0 and matrix[i+1][j-1]==0:
-                matrix[i+1][j-1] = 2
-                played = 1
-            elif i-1>=0 and j+1<3 and matrix[i-1][j+1]==0:
-                matrix[i-1][j+1] = 2
-                played = 1
-            elif i-1>=0 and j-1>=0 and matrix[i-1][j-1]==0:
-                matrix[i-1][j-1] = 2
-                played = 1
-            # Then, it tries every possible play.
-            else:
-                for i in range(0, 3):
-                    for j in range(0, 3):
-                        if matrix[i][j]==0:
-                            matrix[i][j] = 2
-                            played = 1
-
-            # Lastly, if nothing works, it's a tie.
-            if not played:
-                result = 0
+    
+            matrix[y-1][x-1] = 1
+            print_table(matrix)
+    
+            # Checking if the player has won
+            if hasWon(matrix, 1) == 1:
+                result = 1
+                closed = 1            
+    
+    
+            if not closed:
+                #Computer's Turn -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+                played = 0
+                i = y - 1  
+                j = x - 1
+    
+                #Idea to improve the CPU's skill: Firstly, check if in any row, column or diagonal the player is almost winning (with two symbols). If not, make the tradicional play.
+    
+                # It tries to play at the sides of the player's symbol 
+                if i+1 < 3 and matrix[i+1][j]==0:
+                    matrix[i+1][j] = 2
+                    played = 1
+                elif i-1 >= 0 and matrix[i-1][j]==0:
+                    matrix[i-1][j] = 2
+                    played = 1
+                elif j+1 < 3 and matrix[i][j+1]==0:
+                    matrix[i][j+1] = 2
+                    played = 1
+                elif j-1 >= 0 and matrix[i][j-1]==0:
+                    matrix[i][j-1] = 2
+                    played = 1
+                # Now at the diagonals
+                elif i+1<3 and j+1<3 and matrix[i+1][j+1]==0:
+                    matrix[i+1][j+1] = 2
+                    played = 1
+                elif i+1<3 and j-1>=0 and matrix[i+1][j-1]==0:
+                    matrix[i+1][j-1] = 2
+                    played = 1
+                elif i-1>=0 and j+1<3 and matrix[i-1][j+1]==0:
+                    matrix[i-1][j+1] = 2
+                    played = 1
+                elif i-1>=0 and j-1>=0 and matrix[i-1][j-1]==0:
+                    matrix[i-1][j-1] = 2
+                    played = 1
+                # Then, it tries every possible play.
+                else:
+                    for i in range(0, 3):
+                        for j in range(0, 3):
+                            if matrix[i][j]==0:
+                                matrix[i][j] = 2
+                                played = 1
+    
+                # Lastly, if nothing works, it's a tie.
+                if not played:
+                    result = 0
+                    closed = 1
+    
+            if not closed and hasWon(matrix, 2)==1:
+                result = -1
                 closed = 1
-
-        if not closed and hasWon(matrix, 2)==1:
-            result = -1
-            closed = 1
-
-        print_table(matrix)
-
-
-    if result == 1:
-        print()
-        print("Congrats!! You won!")
-    elif result == 0:
-        print()
-        print("It's a tie.")
-    elif result == -1:
-        print()
-        print("What a shame. You lost.")
-
-    digited = 0
-    while not digited:
-        print("Wanna play again? (Y or N)")
-
-        x = input()
-        if x == 'Y':
-            digited = 1
-        elif x == 'N':
-            digited = 1
-            finish = 1
-        else:
-            print("Input incorrect. Try again.")
+    
+            print_table(matrix)
+    
+    
+        if result == 1:
+            print()
+            print("Congrats!! You won!")
+        elif result == 0:
+            print()
+            print("It's a tie.")
+        elif result == -1:
+            print()
+            print("What a shame. You lost.")
+    
+        digited = 0
+        while not digited:
+            print("Wanna play again? (Y or N)")
+    
+            x = input()
+            if x == 'Y':
+                digited = 1
+            elif x == 'N':
+                digited = 1
+                finish = 1
+            else:
+                print("Input incorrect. Try again.")
+    
+    print("Turning off...")
 
 
-print("Turning off...")    
+def __name__ == "__main__":
+    main()
