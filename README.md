@@ -1,5 +1,5 @@
-# Tic_tac_toe
-Simple version of Tic-tac-toe made from zero in Python 3.
+# Tic tac toe
+Simple version of Tic tac toe made from zero using Python.
 
 It uses the standard input/output as the interface for the game, at least for now.
 
