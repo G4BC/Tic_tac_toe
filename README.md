@@ -3,6 +3,9 @@ Simple version of Tic tac toe made from zero using Python.
 
 It uses the standard input/output as the interface for the game, at least for now.
 
+[WORK IN PROGRESS] : Currently, I'm making the interface with Tkinter and migrating the game logic.
+                      Because of that, the game is not working right now.
+
 
 **Features**
 - Functional grid, gameplay and CPU.
